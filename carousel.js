@@ -39,5 +39,56 @@ const images = [
 
 
 
+// --- JS ---
+
+let i = 0;
+create();
+
+// --- FUNCTIONS ---
+
+function create() {
+const img = images[i];
+let printImg = `<div id="imgContainer">`;
+printImg += `<button class="fa-solid fa-chevron-up button" id="up"></button>`;
+printImg += `<div id="image">`;
+printImg += `<img id="zoommed" src="./${img.image}" alt="${img.title}">`;
+printImg += `</div>`;
+printImg += `<h3 id="title">${img.title}</h3>`;
+printImg += `<p>${img.text}</p>`;
+printImg += `<button class="fa-solid fa-chevron-down button" id="down"></button>`;
+printImg += `</div>`;
+document.getElementById("slide").innerHTML = printImg;
+
+button = document.getElementById("up");
+button.addEventListener("click", up);
+
+button = document.getElementById("down");
+button.addEventListener("click", down);
+}
+
+function up() {
+if (i == images.length - 1) {
+    i = 0;
+    create();
+}
+else {
+    i++;
+    create();
+}
+}
+
+function down() {
+if (i == 0) {
+    i = images.length - 1;
+    create();
+}
+else {
+    i--;
+    create();
+}
+}
+
+
+
 
 
